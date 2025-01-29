@@ -1,0 +1,12 @@
+tests
+grafana/data
+reframe_out
+stage
+input
+
+*__pycache__*
+*.log
+*.out
+*.err
+*.db
+*.sif

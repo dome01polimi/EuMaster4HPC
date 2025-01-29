@@ -1,0 +1,1697 @@
+{
+	"annotations": {
+	  "list": [
+		{
+		  "builtIn": 1,
+		  "datasource": {
+			"type": "grafana",
+			"uid": "-- Grafana --"
+		  },
+		  "enable": true,
+		  "hide": true,
+		  "iconColor": "rgba(0, 211, 255, 1)",
+		  "name": "Annotations & Alerts",
+		  "type": "dashboard"
+		}
+	  ]
+	},
+	"editable": true,
+	"fiscalYearStartMonth": 0,
+	"graphTooltip": 0,
+	"id": 1,
+	"links": [],
+	"panels": [
+	  {
+		"datasource": {
+		  "type": "marcusolsson-csv-datasource",
+		  "uid": "PA7F09D65BBE814D6"
+		},
+		"description": "Execution times as function of increasing Watercluster count (i.e. W1, W5, W10, W15, W20, W25, W30), meaning with increasing number of particles.",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisBorderShow": false,
+			  "axisCenteredZero": false,
+			  "axisColorMode": "text",
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "fillOpacity": 50,
+			  "hideFrom": {
+				"legend": false,
+				"tooltip": false,
+				"viz": false
+			  },
+			  "pointShape": "circle",
+			  "pointSize": {
+				"fixed": 9
+			  },
+			  "pointStrokeWidth": 1,
+			  "scaleDistribution": {
+				"log": 2,
+				"type": "log"
+			  },
+			  "show": "points+lines"
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": [
+			{
+			  "matcher": {
+				"id": "byRegexp",
+				"options": "^.*x86.*$"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.pointShape",
+				  "value": "square"
+				}
+			  ]
+			},
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "x86_Intel execution_time_value"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.axisLabel",
+				  "value": "Execution Time (s)"
+				}
+			  ]
+			},
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "x86_Intel waterclusters"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.axisLabel",
+				  "value": "# of Waterclusters"
+				}
+			  ]
+			}
+		  ]
+		},
+		"gridPos": {
+		  "h": 11,
+		  "w": 12,
+		  "x": 0,
+		  "y": 0
+		},
+		"id": 3,
+		"options": {
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom",
+			"showLegend": true
+		  },
+		  "mapping": "manual",
+		  "series": [
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 0
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel waterclusters"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 1
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU waterclusters"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 2
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU waterclusters"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 3
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu waterclusters"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu execution_time_value"
+				}
+			  }
+			}
+		  ],
+		  "tooltip": {
+			"mode": "single",
+			"sort": "none"
+		  }
+		},
+		"pluginVersion": "11.4.0",
+		"targets": [
+		  {
+			"decimalSeparator": ".",
+			"delimiter": ",",
+			"header": true,
+			"ignoreUnknown": false,
+			"path": "ParticleScalingTest.log",
+			"refId": "A",
+			"schema": [
+			  {
+				"name": "waterclusters",
+				"type": "string"
+			  },
+			  {
+				"name": "execution_time_value",
+				"type": "number"
+			  },
+			  {
+				"name": "calculation",
+				"type": "string"
+			  },
+			  {
+				"name": "environ",
+				"type": "string"
+			  }
+			],
+			"skipRows": 0
+		  }
+		],
+		"title": "Particle Scaling Test for ${calculation} calculation",
+		"transformations": [
+		  {
+			"id": "filterByValue",
+			"options": {
+			  "filters": [
+				{
+				  "config": {
+					"id": "equal",
+					"options": {
+					  "value": "${calculation}"
+					}
+				  },
+				  "fieldName": "calculation"
+				}
+			  ],
+			  "match": "all",
+			  "type": "include"
+			}
+		  },
+		  {
+			"id": "formatString",
+			"options": {
+			  "outputFormat": "Substring",
+			  "stringField": "waterclusters",
+			  "substringStart": 1
+			}
+		  },
+		  {
+			"id": "convertFieldType",
+			"options": {
+			  "conversions": [
+				{
+				  "destinationType": "number",
+				  "targetField": "waterclusters"
+				}
+			  ],
+			  "fields": {}
+			}
+		  },
+		  {
+			"id": "sortBy",
+			"options": {
+			  "fields": {},
+			  "sort": [
+				{
+				  "field": "waterclusters"
+				}
+			  ]
+			}
+		  },
+		  {
+			"id": "sortBy",
+			"options": {
+			  "fields": {},
+			  "sort": [
+				{
+				  "desc": true,
+				  "field": "environ"
+				}
+			  ]
+			}
+		  },
+		  {
+			"id": "partitionByValues",
+			"options": {
+			  "fields": [
+				"environ"
+			  ],
+			  "keepFields": false,
+			  "naming": {
+				"asLabels": false
+			  }
+			}
+		  }
+		],
+		"type": "xychart"
+	  },
+	  {
+		"datasource": {
+		  "type": "marcusolsson-csv-datasource",
+		  "uid": "PA7F09D65BBE814D6"
+		},
+		"description": "Execution time as function of increasing function basis set dimension for the wavefunction. Using the Watercluster W5.\n",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisBorderShow": false,
+			  "axisCenteredZero": false,
+			  "axisColorMode": "text",
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "fillOpacity": 50,
+			  "hideFrom": {
+				"legend": false,
+				"tooltip": false,
+				"viz": false
+			  },
+			  "lineStyle": {
+				"fill": "solid"
+			  },
+			  "pointShape": "circle",
+			  "pointSize": {
+				"fixed": 9
+			  },
+			  "pointStrokeWidth": 1,
+			  "scaleDistribution": {
+				"linearThreshold": 3,
+				"log": 2,
+				"type": "symlog"
+			  },
+			  "show": "points+lines"
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": [
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "x86_Intel basis_set"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.axisLabel",
+				  "value": "Basis Set Size (5Z, QZ, TZ, DZ)"
+				}
+			  ]
+			},
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "x86_Intel execution_time_value"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.axisLabel",
+				  "value": "Execution Time (s)"
+				}
+			  ]
+			}
+		  ]
+		},
+		"gridPos": {
+		  "h": 11,
+		  "w": 12,
+		  "x": 12,
+		  "y": 0
+		},
+		"id": 4,
+		"options": {
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom",
+			"showLegend": true
+		  },
+		  "mapping": "manual",
+		  "series": [
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 0
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel basis_set"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 1
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU basis_set"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 2
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU basis_set"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 3
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu basis_set"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu execution_time_value"
+				}
+			  }
+			}
+		  ],
+		  "tooltip": {
+			"mode": "single",
+			"sort": "none"
+		  }
+		},
+		"pluginVersion": "11.4.0",
+		"targets": [
+		  {
+			"decimalSeparator": ".",
+			"delimiter": ",",
+			"header": true,
+			"ignoreUnknown": false,
+			"path": "BasisSetScalingTest.log",
+			"refId": "A",
+			"schema": [
+			  {
+				"name": "basis_set",
+				"type": "string"
+			  },
+			  {
+				"name": "execution_time_value",
+				"type": "number"
+			  },
+			  {
+				"name": "calculation",
+				"type": "string"
+			  },
+			  {
+				"name": "environ",
+				"type": "string"
+			  }
+			],
+			"skipRows": 0
+		  }
+		],
+		"title": "Basis Set Test for ${calculation} calculation",
+		"transformations": [
+		  {
+			"id": "filterByValue",
+			"options": {
+			  "filters": [
+				{
+				  "config": {
+					"id": "equal",
+					"options": {
+					  "value": "${calculation}"
+					}
+				  },
+				  "fieldName": "calculation"
+				}
+			  ],
+			  "match": "all",
+			  "type": "include"
+			}
+		  },
+		  {
+			"id": "sortBy",
+			"options": {
+			  "fields": {},
+			  "sort": [
+				{
+				  "field": "execution_time_value"
+				}
+			  ]
+			}
+		  },
+		  {
+			"id": "convertFieldType",
+			"options": {
+			  "conversions": [
+				{
+				  "destinationType": "enum",
+				  "enumConfig": {
+					"text": [
+					  "DZ",
+					  "TZ",
+					  "QZ",
+					  "5Z"
+					]
+				  },
+				  "targetField": "basis_set"
+				},
+				{
+				  "destinationType": "number",
+				  "targetField": "basis_set"
+				}
+			  ],
+			  "fields": {}
+			}
+		  },
+		  {
+			"id": "sortBy",
+			"options": {
+			  "fields": {},
+			  "sort": [
+				{
+				  "desc": true,
+				  "field": "environ"
+				}
+			  ]
+			}
+		  },
+		  {
+			"id": "partitionByValues",
+			"options": {
+			  "fields": [
+				"environ"
+			  ],
+			  "keepFields": false,
+			  "naming": {
+				"asLabels": false
+			  }
+			}
+		  }
+		],
+		"type": "xychart"
+	  },
+	  {
+		"datasource": {
+		  "type": "marcusolsson-csv-datasource",
+		  "uid": "PA7F09D65BBE814D6"
+		},
+		"description": "Execution time as function of the number of theads per MPI Process. Computed with 30 Waterclusters and VMC calculation.",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisBorderShow": false,
+			  "axisCenteredZero": false,
+			  "axisColorMode": "text",
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "fillOpacity": 50,
+			  "hideFrom": {
+				"legend": false,
+				"tooltip": false,
+				"viz": false
+			  },
+			  "lineStyle": {
+				"fill": "solid"
+			  },
+			  "lineWidth": 2,
+			  "pointShape": "circle",
+			  "pointSize": {
+				"fixed": 9
+			  },
+			  "pointStrokeWidth": 2,
+			  "scaleDistribution": {
+				"linearThreshold": 4,
+				"log": 2,
+				"type": "log"
+			  },
+			  "show": "points+lines"
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": [
+			{
+			  "matcher": {
+				"id": "byRegexp",
+				"options": "^.*x86.*$"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.pointShape",
+				  "value": "square"
+				}
+			  ]
+			},
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "x86_Intel 4 num_cpus_per_task"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.axisLabel",
+				  "value": "# Threads per MPI Process"
+				}
+			  ]
+			},
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "x86_Intel 4 execution_time_value"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.axisLabel",
+				  "value": "Execution Time (s)"
+				}
+			  ]
+			}
+		  ]
+		},
+		"gridPos": {
+		  "h": 11,
+		  "w": 12,
+		  "x": 0,
+		  "y": 11
+		},
+		"id": 6,
+		"options": {
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom",
+			"showLegend": true
+		  },
+		  "mapping": "manual",
+		  "series": [
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 0
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel 4 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel 4 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 1
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel 8 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel 8 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 2
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel 2 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel 2 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 3
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel 1 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel 1 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 4
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU 8 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU 8 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 5
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU 4 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU 4 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 6
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU 1 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU 1 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 7
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU 2 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU 2 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 8
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu 1 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu 1 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 9
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 10
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu 8 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu 8 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 11
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu 4 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu 4 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 12
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU 1 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU 1 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 13
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU 2 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU 2 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 14
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU 8 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU 8 execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 15
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU 4 num_cpus_per_task"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU 4 execution_time_value"
+				}
+			  }
+			}
+		  ],
+		  "tooltip": {
+			"maxWidth": -1,
+			"mode": "single",
+			"sort": "none"
+		  }
+		},
+		"pluginVersion": "11.4.0",
+		"targets": [
+		  {
+			"decimalSeparator": ".",
+			"delimiter": ",",
+			"header": true,
+			"ignoreUnknown": false,
+			"path": "OmpMpiRatio.log",
+			"refId": "A",
+			"schema": [
+			  {
+				"name": "num_cpus_per_task",
+				"type": "number"
+			  },
+			  {
+				"name": "num_tasks",
+				"type": "number"
+			  },
+			  {
+				"name": "execution_time_value",
+				"type": "number"
+			  },
+			  {
+				"name": "calculation",
+				"type": "string"
+			  },
+			  {
+				"name": "environ",
+				"type": "string"
+			  }
+			],
+			"skipRows": 0
+		  }
+		],
+		"title": "OMP-MPI Ratio Test",
+		"transformations": [
+		  {
+			"id": "sortBy",
+			"options": {
+			  "fields": {},
+			  "sort": [
+				{
+				  "field": "num_cpus_per_task"
+				}
+			  ]
+			}
+		  },
+		  {
+			"id": "partitionByValues",
+			"options": {
+			  "fields": [
+				"environ",
+				"num_tasks"
+			  ],
+			  "keepFields": false,
+			  "naming": {
+				"asLabels": false
+			  }
+			}
+		  }
+		],
+		"type": "xychart"
+	  },
+	  {
+		"datasource": {
+		  "type": "marcusolsson-csv-datasource",
+		  "uid": "PA7F09D65BBE814D6"
+		},
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "palette-classic"
+			},
+			"custom": {
+			  "axisBorderShow": false,
+			  "axisCenteredZero": false,
+			  "axisColorMode": "text",
+			  "axisLabel": "",
+			  "axisPlacement": "auto",
+			  "fillOpacity": 50,
+			  "hideFrom": {
+				"legend": false,
+				"tooltip": false,
+				"viz": false
+			  },
+			  "lineStyle": {
+				"fill": "solid"
+			  },
+			  "lineWidth": 2,
+			  "pointShape": "circle",
+			  "pointSize": {
+				"fixed": 9
+			  },
+			  "pointStrokeWidth": 1,
+			  "scaleDistribution": {
+				"linearThreshold": 4,
+				"log": 2,
+				"type": "log"
+			  },
+			  "show": "points+lines"
+			},
+			"mappings": [],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "green",
+				  "value": null
+				},
+				{
+				  "color": "red",
+				  "value": 80
+				}
+			  ]
+			}
+		  },
+		  "overrides": [
+			{
+			  "matcher": {
+				"id": "byRegexp",
+				"options": "^.*x86.*$"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.pointShape",
+				  "value": "square"
+				}
+			  ]
+			},
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "x86_Intel num_tasks"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.axisLabel",
+				  "value": "# Tasks"
+				}
+			  ]
+			},
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "x86_Intel execution_time_value"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.axisLabel",
+				  "value": "Execution Time (s)"
+				}
+			  ]
+			}
+		  ]
+		},
+		"gridPos": {
+		  "h": 11,
+		  "w": 12,
+		  "x": 12,
+		  "y": 11
+		},
+		"id": 5,
+		"options": {
+		  "legend": {
+			"calcs": [],
+			"displayMode": "list",
+			"placement": "bottom",
+			"showLegend": true
+		  },
+		  "mapping": "manual",
+		  "series": [
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 0
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel num_tasks"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_Intel execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 1
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU num_tasks"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "x86_GNU execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 2
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU num_tasks"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_GNU execution_time_value"
+				}
+			  }
+			},
+			{
+			  "frame": {
+				"matcher": {
+				  "id": "byIndex",
+				  "options": 3
+				}
+			  },
+			  "x": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu num_tasks"
+				}
+			  },
+			  "y": {
+				"matcher": {
+				  "id": "byName",
+				  "options": "arm_Fujitsu execution_time_value"
+				}
+			  }
+			}
+		  ],
+		  "tooltip": {
+			"mode": "single",
+			"sort": "none"
+		  }
+		},
+		"pluginVersion": "11.4.0",
+		"targets": [
+		  {
+			"decimalSeparator": ".",
+			"delimiter": ",",
+			"header": true,
+			"ignoreUnknown": false,
+			"path": "WeakScalingTest.log",
+			"refId": "A",
+			"schema": [
+			  {
+				"name": "num_tasks",
+				"type": "number"
+			  },
+			  {
+				"name": "execution_time_value",
+				"type": "number"
+			  },
+			  {
+				"name": "calculation",
+				"type": "string"
+			  },
+			  {
+				"name": "environ",
+				"type": "string"
+			  }
+			],
+			"skipRows": 0
+		  }
+		],
+		"title": "Weak Scaling Test for ${calculation} calculation",
+		"transformations": [
+		  {
+			"id": "filterByValue",
+			"options": {
+			  "filters": [
+				{
+				  "config": {
+					"id": "equal",
+					"options": {
+					  "value": "${calculation}"
+					}
+				  },
+				  "fieldName": "calculation"
+				}
+			  ],
+			  "match": "all",
+			  "type": "include"
+			}
+		  },
+		  {
+			"id": "sortBy",
+			"options": {
+			  "fields": {},
+			  "sort": [
+				{
+				  "field": "num_tasks"
+				}
+			  ]
+			}
+		  },
+		  {
+			"id": "sortBy",
+			"options": {
+			  "fields": {},
+			  "sort": [
+				{
+				  "desc": true,
+				  "field": "environ"
+				}
+			  ]
+			}
+		  },
+		  {
+			"id": "partitionByValues",
+			"options": {
+			  "fields": [
+				"environ"
+			  ],
+			  "keepFields": false,
+			  "naming": {
+				"asLabels": false
+			  }
+			}
+		  }
+		],
+		"type": "xychart"
+	  },
+	  {
+		"datasource": {
+		  "type": "marcusolsson-csv-datasource",
+		  "uid": "PA7F09D65BBE814D6"
+		},
+		"description": "Check of the final values obtained from a short optimization run with 2 consecutive steps. The variation of the result for the change of each separate set of parameters in the wave functions is verified.",
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {
+			  "align": "center",
+			  "cellOptions": {
+				"applyToRow": false,
+				"mode": "gradient",
+				"type": "color-background",
+				"wrapText": false
+			  },
+			  "filterable": false,
+			  "inspect": false,
+			  "width": 25
+			},
+			"mappings": [
+			  {
+				"options": {
+				  "fail": {
+					"color": "red",
+					"index": 0
+				  },
+				  "pass": {
+					"color": "green",
+					"index": 1
+				  }
+				},
+				"type": "value"
+			  }
+			],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "transparent",
+				  "value": null
+				}
+			  ]
+			}
+		  },
+		  "overrides": [
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "rpf\\input_type"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.width",
+				  "value": 152
+				}
+			  ]
+			}
+		  ]
+		},
+		"gridPos": {
+		  "h": 17,
+		  "w": 12,
+		  "x": 0,
+		  "y": 22
+		},
+		"id": 7,
+		"options": {
+		  "cellHeight": "sm",
+		  "footer": {
+			"countRows": false,
+			"enablePagination": false,
+			"fields": "",
+			"reducer": [
+			  "sum"
+			],
+			"show": false
+		  },
+		  "showHeader": true,
+		  "sortBy": []
+		},
+		"pluginVersion": "11.4.0",
+		"targets": [
+		  {
+			"decimalSeparator": ".",
+			"delimiter": ",",
+			"header": true,
+			"ignoreUnknown": false,
+			"path": "TwoStepOptCorrectnessTest.log",
+			"refId": "A",
+			"schema": [
+			  {
+				"name": "result",
+				"type": "string"
+			  },
+			  {
+				"name": "rpf",
+				"type": "string"
+			  },
+			  {
+				"name": "input_type",
+				"type": "string"
+			  }
+			],
+			"skipRows": 0
+		  }
+		],
+		"title": "Correctness of a 2-step optimization",
+		"transformations": [
+		  {
+			"id": "groupingToMatrix",
+			"options": {
+			  "columnField": "input_type",
+			  "rowField": "rpf",
+			  "valueField": "result"
+			}
+		  }
+		],
+		"type": "table"
+	  },
+	  {
+		"datasource": {
+		  "type": "marcusolsson-csv-datasource",
+		  "uid": "PA7F09D65BBE814D6"
+		},
+		"fieldConfig": {
+		  "defaults": {
+			"color": {
+			  "mode": "thresholds"
+			},
+			"custom": {
+			  "align": "center",
+			  "cellOptions": {
+				"type": "color-background"
+			  },
+			  "inspect": false,
+			  "width": 100
+			},
+			"mappings": [
+			  {
+				"options": {
+				  "fail": {
+					"color": "red",
+					"index": 1
+				  },
+				  "pass": {
+					"color": "green",
+					"index": 0
+				  }
+				},
+				"type": "value"
+			  }
+			],
+			"thresholds": {
+			  "mode": "absolute",
+			  "steps": [
+				{
+				  "color": "transparent",
+				  "value": null
+				}
+			  ]
+			}
+		  },
+		  "overrides": [
+			{
+			  "matcher": {
+				"id": "byName",
+				"options": "rpf\\calculation"
+			  },
+			  "properties": [
+				{
+				  "id": "custom.width",
+				  "value": 138
+				}
+			  ]
+			}
+		  ]
+		},
+		"gridPos": {
+		  "h": 17,
+		  "w": 12,
+		  "x": 12,
+		  "y": 22
+		},
+		"id": 8,
+		"options": {
+		  "cellHeight": "sm",
+		  "footer": {
+			"countRows": false,
+			"fields": "",
+			"reducer": [
+			  "sum"
+			],
+			"show": false
+		  },
+		  "showHeader": true,
+		  "sortBy": []
+		},
+		"pluginVersion": "11.4.0",
+		"targets": [
+		  {
+			"decimalSeparator": ".",
+			"delimiter": ",",
+			"header": true,
+			"ignoreUnknown": false,
+			"path": "DmcVmcCorrectnessTest.log",
+			"refId": "A",
+			"schema": [
+			  {
+				"name": "result",
+				"type": "string"
+			  },
+			  {
+				"name": "rpf",
+				"type": "string"
+			  },
+			  {
+				"name": "calculation",
+				"type": "string"
+			  }
+			],
+			"skipRows": 0
+		  }
+		],
+		"title": "Correctness of DMC/VMC calculation",
+		"transformations": [
+		  {
+			"id": "groupingToMatrix",
+			"options": {
+			  "columnField": "calculation",
+			  "rowField": "rpf",
+			  "valueField": "result"
+			}
+		  }
+		],
+		"type": "table"
+	  }
+	],
+	"preload": false,
+	"schemaVersion": 40,
+	"tags": [],
+	"templating": {
+	  "list": [
+		{
+		  "current": {
+			"text": "arm_Fujitsu",
+			"value": "arm_Fujitsu"
+		  },
+		  "definition": "",
+		  "name": "environment",
+		  "options": [],
+		  "query": {
+			"decimalSeparator": ".",
+			"delimiter": ",",
+			"header": true,
+			"ignoreUnknown": true,
+			"path": "WeakScalingTest.log",
+			"schema": [
+			  {
+				"name": "environ",
+				"type": "string"
+			  }
+			],
+			"skipRows": 0
+		  },
+		  "refresh": 1,
+		  "regex": "",
+		  "sort": 1,
+		  "type": "query"
+		},
+		{
+		  "current": {
+			"text": "dmc",
+			"value": "dmc"
+		  },
+		  "definition": "",
+		  "name": "calculation",
+		  "options": [],
+		  "query": {
+			"decimalSeparator": ".",
+			"delimiter": ",",
+			"header": true,
+			"ignoreUnknown": true,
+			"path": "WeakScalingTest.log",
+			"schema": [
+			  {
+				"name": "calculation",
+				"type": "string"
+			  }
+			],
+			"skipRows": 0
+		  },
+		  "refresh": 1,
+		  "regex": "",
+		  "sort": 1,
+		  "type": "query"
+		}
+	  ]
+	},
+	"time": {
+	  "from": "now-6h",
+	  "to": "now"
+	},
+	"timepicker": {},
+	"timezone": "browser",
+	"title": "QMechaTestingDashboard",
+	"uid": "ee9osq9hx5eyof",
+	"version": 1,
+	"weekStart": ""
+  }

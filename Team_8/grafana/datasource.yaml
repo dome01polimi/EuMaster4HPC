@@ -1,0 +1,30 @@
+apiVersion: 1
+
+datasources:
+  - name: reframe-perflogs  # Name of the datasource that will be shown in the UI
+    type: marcusolsson-csv-datasource
+    access: proxy
+    orgId: 1
+    url: /reframe_out/perflogs
+    basicAuth: false
+    withCredentials: false
+    isDefault: true
+    jsonData:
+      storage: local
+    version: 4
+    editable: true
+    is_prunable: false
+
+  - name: reframe-processed-logs
+    type: marcusolsson-csv-datasource
+    access: proxy
+    orgId: 1
+    url: /reframe_out/processed_logs
+    basicAuth: false
+    withCredentials: false
+    isDefault: false
+    jsonData:
+      storage: local
+    version: 4
+    editable: true
+    is_prunable: false
